@@ -13,7 +13,7 @@
 @synthesize tasks;
 @synthesize sitename;
 @synthesize uuid;
-@synthesize hostingSetup;
+@synthesize rawHostingSetup;
 
 - (void)loadCustomerBySitename:(NSString *)site {
     self.sitename = [site stringByReplacingOccurrencesOfString:@"@" withString:@""];
@@ -84,7 +84,7 @@
 }
 
 - (void)getHostedDetails {
-    hostingSetup = @"";
+    self.rawHostingSetup = @"";
     NSTask *task = [[NSTask alloc] init];
     [task setLaunchPath:[[NSBundle mainBundle] pathForResource:@"aht" ofType:@""]];
     [task setArguments:[NSArray arrayWithObject: [NSString stringWithFormat:@"@%@", self.sitename]]];
@@ -97,7 +97,7 @@
             [self performSelectorOnMainThread:@selector(alertCustomerNotFound) withObject:nil waitUntilDone:NO];
         }
         
-        NSString *gitURL = [self performRegex:@".*@svn-\\d+\\..*\\.acquia\\.com:.*\\.git" onString:result];
+        NSString *gitURL = [self performRegex:@".*@svn-\\d+\\..*\\.acquia\\.com:.*\\.git" onString:result withCaptureGroup:NO];
         
         if (gitURL) {
             self.repository = gitURL;
@@ -109,12 +109,11 @@
                                         range:NSMakeRange(0, [result length])] >= 1) {
             NSLog(@"Customer is ACE!");
         }
-        self.hostingSetup = [self.hostingSetup stringByAppendingString:result];
-        NSLog(self.hostingSetup);
+        self.rawHostingSetup = [self.rawHostingSetup stringByAppendingString:result];
     }];
     
     [task setTerminationHandler:^(NSTask *task) {
-        self.tasks--;
+        [self processHostingSetupResponse];
         [task.standardOutput fileHandleForReading].readabilityHandler = nil;
     }];
     
@@ -136,6 +135,30 @@
     }
 }
 
+- (void)processHostingSetupResponse
+{
+    self.hostingSetup = [[NSMutableDictionary alloc] init];
+    NSArray *hostingSetupSplit = [self.rawHostingSetup componentsSeparatedByString:@"\r\n\r\n"];
+    for (NSString *object in hostingSetupSplit) {
+        NSString *isEnvironment = [self performRegex:@"\\[\\w+:.*\\] \\[Repo Tag :.*\\] \\[PHP.*\\]" onString:object withCaptureGroup:NO];
+        
+        if (isEnvironment) {
+            NSArray *allParse = [object componentsSeparatedByString:@"]"];
+            NSArray *environmentParse = [[allParse objectAtIndex:0] componentsSeparatedByString:@":"];
+            [self.hostingSetup setObject:[self sanitizeRawResponse:[environmentParse objectAtIndex:1]] forKey:[self sanitizeRawResponse:[environmentParse objectAtIndex:0]]];
+        }
+    }
+    self.tasks--;
+}
+
+- (NSString *)sanitizeRawResponse:(NSString *)string
+{
+    string = [string stringByReplacingOccurrencesOfString:@"[" withString:@""];
+    string = [string stringByReplacingOccurrencesOfString:@" " withString:@""];
+    string = [string stringByReplacingOccurrencesOfString:@"]" withString:@""];
+    return string;
+}
+
 - (void)alertCustomerNotFound
 {
     NSAlert *alert = [[NSAlert alloc] init];
@@ -146,7 +169,7 @@
     [alert beginSheetModalForWindow:[NSApp keyWindow] modalDelegate:self didEndSelector:nil contextInfo:nil];
 }
 
-- (NSString *)performRegex:(NSString *)regex onString:(NSString *)string
+- (NSString *)performRegex:(NSString *)regex onString:(NSString *)string withCaptureGroup:(BOOL)group
 {
     NSError *error = NULL;
     
@@ -159,7 +182,11 @@
                                                                  range:NSMakeRange(0, [string length])];
     
     if (regexMatch) {
-        return [string substringWithRange:[regexMatch range]];
+        if (group) {
+            return [string substringWithRange:[regexMatch rangeAtIndex:1]];
+        } else {
+            return [string substringWithRange:[regexMatch range]];
+        }
     } else {
         return nil;
     }
