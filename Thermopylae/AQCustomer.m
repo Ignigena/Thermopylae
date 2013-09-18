@@ -13,6 +13,7 @@
 @synthesize tasks;
 @synthesize sitename;
 @synthesize uuid;
+@synthesize hostingSetup;
 
 - (void)loadCustomerBySitename:(NSString *)site {
     self.sitename = [site stringByReplacingOccurrencesOfString:@"@" withString:@""];
@@ -83,6 +84,7 @@
 }
 
 - (void)getHostedDetails {
+    hostingSetup = @"";
     NSTask *task = [[NSTask alloc] init];
     [task setLaunchPath:[[NSBundle mainBundle] pathForResource:@"aht" ofType:@""]];
     [task setArguments:[NSArray arrayWithObject: [NSString stringWithFormat:@"@%@", self.sitename]]];
@@ -107,7 +109,8 @@
                                         range:NSMakeRange(0, [result length])] >= 1) {
             NSLog(@"Customer is ACE!");
         }
-        NSLog(@"%@", result);
+        self.hostingSetup = [self.hostingSetup stringByAppendingString:result];
+        NSLog(self.hostingSetup);
     }];
     
     [task setTerminationHandler:^(NSTask *task) {

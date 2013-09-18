@@ -32,6 +32,12 @@
         [(AQAppDelegate *)[[NSApplication sharedApplication] delegate] loadCustomerDataForCustomer: [pathComponents objectAtIndex:1]];
         [response setObject:[pathComponents objectAtIndex:1] forKey:@"docroot"];
     }
+    
+    while ([[(AQAppDelegate *)[[NSApplication sharedApplication] delegate] customerData] tasks] != 0) {
+    	[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
+    }
+    
+    [response setObject:[[(AQAppDelegate *)[[NSApplication sharedApplication] delegate] customerData] hostingSetup] forKey:@"response"];
 
     return [[HTTPDataResponse alloc] initWithData:[response JSONData]];
 }
