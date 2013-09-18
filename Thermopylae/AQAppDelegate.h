@@ -8,8 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class ITSidebar;
+@class AQCustomer;
+
 @interface AQAppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (weak) IBOutlet ITSidebar *sidebar;
+@property (weak) IBOutlet NSSearchField *searchField;
+@property (weak) IBOutlet NSProgressIndicator *spinner;
+@property (weak) IBOutlet AQCustomer *customerData;
 
 @end

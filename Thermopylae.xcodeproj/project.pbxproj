@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4DBBA13117C83CD0005C274D /* AQTaskNumberToBusy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBBA13017C83CD0005C274D /* AQTaskNumberToBusy.m */; };
+		4DBBA13417C868D4005C274D /* dark_sector.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 4DBBA13317C868D4005C274D /* dark_sector.tiff */; };
+		4DBBA13717C86AF8005C274D /* AQEnvironmentVisualizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBBA13617C86AF7005C274D /* AQEnvironmentVisualizer.m */; };
+		4DBBA13917C86C1A005C274D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBBA13817C86C1A005C274D /* QuartzCore.framework */; };
+		4DDD531517A07C8800311D0B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDD531417A07C8800311D0B /* Cocoa.framework */; };
+		4DDD531F17A07C8800311D0B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4DDD531D17A07C8800311D0B /* InfoPlist.strings */; };
+		4DDD532117A07C8800311D0B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD532017A07C8800311D0B /* main.m */; };
+		4DDD532517A07C8800311D0B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4DDD532317A07C8800311D0B /* Credits.rtf */; };
+		4DDD532817A07C8800311D0B /* AQAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD532717A07C8800311D0B /* AQAppDelegate.m */; };
+		4DDD532B17A07C8800311D0B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DDD532917A07C8800311D0B /* MainMenu.xib */; };
+		4DDD533217A0822900311D0B /* aht in Resources */ = {isa = PBXBuildFile; fileRef = 4DDD533117A0822900311D0B /* aht */; };
+		4DDD538117A0A78F00311D0B /* Rebel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDD537C17A0A5FA00311D0B /* Rebel.framework */; };
+		4DDD538B17A0ABF500311D0B /* watch-pushed.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDD538717A0ABF500311D0B /* watch-pushed.png */; };
+		4DDD538C17A0ABF500311D0B /* watch-pushed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDD538817A0ABF500311D0B /* watch-pushed@2x.png */; };
+		4DDD538D17A0ABF500311D0B /* watch.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDD538917A0ABF500311D0B /* watch.png */; };
+		4DDD538E17A0ABF500311D0B /* watch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDD538A17A0ABF500311D0B /* watch@2x.png */; };
+		4DDD539317A0AC0400311D0B /* push-pushed.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDD538F17A0AC0400311D0B /* push-pushed.png */; };
+		4DDD539417A0AC0400311D0B /* push-pushed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDD539017A0AC0400311D0B /* push-pushed@2x.png */; };
+		4DDD539517A0AC0400311D0B /* push.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDD539117A0AC0400311D0B /* push.png */; };
+		4DDD539617A0AC0400311D0B /* push@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDD539217A0AC0400311D0B /* push@2x.png */; };
+		4DDD539717A0ACBC00311D0B /* ITSidebar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD538317A0AAF300311D0B /* ITSidebar.m */; };
+		4DDD539817A0ACC000311D0B /* ITSidebarItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD538517A0AAF300311D0B /* ITSidebarItemCell.m */; };
+		4DDD539A17A0BBB100311D0B /* main_header.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 4DDD539917A0BBB100311D0B /* main_header.tiff */; };
+		4DDD539D17A0BF5400311D0B /* AQCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD539C17A0BF5400311D0B /* AQCustomer.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4DDD537B17A0A5FA00311D0B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DDD537417A0A5F900311D0B /* Rebel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D09AE4DF15C5F45200ECAD10;
+			remoteInfo = Rebel;
+		};
+		4DDD537D17A0A5FA00311D0B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DDD537417A0A5F900311D0B /* Rebel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D09AE4F715C5F45300ECAD10;
+			remoteInfo = RebelTests;
+		};
+		4DDD537F17A0A6F200311D0B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DDD537417A0A5F900311D0B /* Rebel.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D09AE4DE15C5F45200ECAD10;
+			remoteInfo = Rebel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4DBBA12F17C83CD0005C274D /* AQTaskNumberToBusy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQTaskNumberToBusy.h; sourceTree = "<group>"; };
+		4DBBA13017C83CD0005C274D /* AQTaskNumberToBusy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQTaskNumberToBusy.m; sourceTree = "<group>"; };
+		4DBBA13317C868D4005C274D /* dark_sector.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = dark_sector.tiff; path = ../Thermopylae/dark_sector.tiff; sourceTree = "<group>"; };
+		4DBBA13517C86AF7005C274D /* AQEnvironmentVisualizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQEnvironmentVisualizer.h; sourceTree = "<group>"; };
+		4DBBA13617C86AF7005C274D /* AQEnvironmentVisualizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQEnvironmentVisualizer.m; sourceTree = "<group>"; };
+		4DBBA13817C86C1A005C274D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4DDD531117A07C8800311D0B /* Thermopylae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Thermopylae.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DDD531417A07C8800311D0B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		4DDD531717A07C8800311D0B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		4DDD531817A07C8800311D0B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		4DDD531917A07C8800311D0B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4DDD531C17A07C8800311D0B /* Thermopylae-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Thermopylae-Info.plist"; path = "../Thermopylae/Thermopylae-Info.plist"; sourceTree = "<group>"; };
+		4DDD531E17A07C8800311D0B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4DDD532017A07C8800311D0B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../Thermopylae/main.m; sourceTree = "<group>"; };
+		4DDD532217A07C8800311D0B /* Thermopylae-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Thermopylae-Prefix.pch"; path = "../Thermopylae/Thermopylae-Prefix.pch"; sourceTree = "<group>"; };
+		4DDD532417A07C8800311D0B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		4DDD532617A07C8800311D0B /* AQAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AQAppDelegate.h; sourceTree = "<group>"; };
+		4DDD532717A07C8800311D0B /* AQAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AQAppDelegate.m; sourceTree = "<group>"; wrapsLines = 0; };
+		4DDD532A17A07C8800311D0B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		4DDD533117A0822900311D0B /* aht */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = aht; path = "../../Support-Tools/bin/aht"; sourceTree = "<group>"; };
+		4DDD537417A0A5F900311D0B /* Rebel.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Rebel.xcodeproj; path = ../Rebel/Rebel.xcodeproj; sourceTree = "<group>"; };
+		4DDD538217A0AAF300311D0B /* ITSidebar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITSidebar.h; sourceTree = "<group>"; };
+		4DDD538317A0AAF300311D0B /* ITSidebar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITSidebar.m; sourceTree = "<group>"; };
+		4DDD538417A0AAF300311D0B /* ITSidebarItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITSidebarItemCell.h; sourceTree = "<group>"; };
+		4DDD538517A0AAF300311D0B /* ITSidebarItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITSidebarItemCell.m; sourceTree = "<group>"; };
+		4DDD538617A0AAF300311D0B /* ITLeakWarningHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ITLeakWarningHelper.h; sourceTree = "<group>"; };
+		4DDD538717A0ABF500311D0B /* watch-pushed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "watch-pushed.png"; path = "../Thermopylae/watch-pushed.png"; sourceTree = "<group>"; };
+		4DDD538817A0ABF500311D0B /* watch-pushed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "watch-pushed@2x.png"; path = "../Thermopylae/watch-pushed@2x.png"; sourceTree = "<group>"; };
+		4DDD538917A0ABF500311D0B /* watch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = watch.png; path = ../Thermopylae/watch.png; sourceTree = "<group>"; };
+		4DDD538A17A0ABF500311D0B /* watch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "watch@2x.png"; path = "../Thermopylae/watch@2x.png"; sourceTree = "<group>"; };
+		4DDD538F17A0AC0400311D0B /* push-pushed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "push-pushed.png"; path = "../Thermopylae/push-pushed.png"; sourceTree = "<group>"; };
+		4DDD539017A0AC0400311D0B /* push-pushed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "push-pushed@2x.png"; path = "../Thermopylae/push-pushed@2x.png"; sourceTree = "<group>"; };
+		4DDD539117A0AC0400311D0B /* push.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = push.png; path = ../Thermopylae/push.png; sourceTree = "<group>"; };
+		4DDD539217A0AC0400311D0B /* push@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "push@2x.png"; path = "../Thermopylae/push@2x.png"; sourceTree = "<group>"; };
+		4DDD539917A0BBB100311D0B /* main_header.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = main_header.tiff; path = ../Thermopylae/main_header.tiff; sourceTree = "<group>"; };
+		4DDD539B17A0BF5400311D0B /* AQCustomer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQCustomer.h; sourceTree = "<group>"; };
+		4DDD539C17A0BF5400311D0B /* AQCustomer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQCustomer.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4DDD530E17A07C8800311D0B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DBBA13917C86C1A005C274D /* QuartzCore.framework in Frameworks */,
+				4DDD538117A0A78F00311D0B /* Rebel.framework in Frameworks */,
+				4DDD531517A07C8800311D0B /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4DDD530817A07C8800311D0B = {
+			isa = PBXGroup;
+			children = (
+				4DDD531A17A07C8800311D0B /* Thermopylae */,
+				4DDD535F17A0A0B100311D0B /* External */,
+				4DDD531317A07C8800311D0B /* Frameworks */,
+				4DDD531217A07C8800311D0B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4DDD531217A07C8800311D0B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DDD531117A07C8800311D0B /* Thermopylae.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4DDD531317A07C8800311D0B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DDD533117A0822900311D0B /* aht */,
+				4DBBA13817C86C1A005C274D /* QuartzCore.framework */,
+				4DDD531417A07C8800311D0B /* Cocoa.framework */,
+				4DDD531617A07C8800311D0B /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4DDD531617A07C8800311D0B /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DDD531717A07C8800311D0B /* AppKit.framework */,
+				4DDD531817A07C8800311D0B /* CoreData.framework */,
+				4DDD531917A07C8800311D0B /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		4DDD531A17A07C8800311D0B /* Thermopylae */ = {
+			isa = PBXGroup;
+			children = (
+				4DDD532617A07C8800311D0B /* AQAppDelegate.h */,
+				4DDD532717A07C8800311D0B /* AQAppDelegate.m */,
+				4DDD539B17A0BF5400311D0B /* AQCustomer.h */,
+				4DDD539C17A0BF5400311D0B /* AQCustomer.m */,
+				4DDD532917A07C8800311D0B /* MainMenu.xib */,
+				4DBBA13517C86AF7005C274D /* AQEnvironmentVisualizer.h */,
+				4DBBA13617C86AF7005C274D /* AQEnvironmentVisualizer.m */,
+				4DBBA12F17C83CD0005C274D /* AQTaskNumberToBusy.h */,
+				4DBBA13017C83CD0005C274D /* AQTaskNumberToBusy.m */,
+				4DDD531B17A07C8800311D0B /* Supporting Files */,
+			);
+			path = Thermopylae;
+			sourceTree = "<group>";
+		};
+		4DDD531B17A07C8800311D0B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4DBBA13317C868D4005C274D /* dark_sector.tiff */,
+				4DDD539917A0BBB100311D0B /* main_header.tiff */,
+				4DDD538F17A0AC0400311D0B /* push-pushed.png */,
+				4DDD539017A0AC0400311D0B /* push-pushed@2x.png */,
+				4DDD539117A0AC0400311D0B /* push.png */,
+				4DDD539217A0AC0400311D0B /* push@2x.png */,
+				4DDD538717A0ABF500311D0B /* watch-pushed.png */,
+				4DDD538817A0ABF500311D0B /* watch-pushed@2x.png */,
+				4DDD538917A0ABF500311D0B /* watch.png */,
+				4DDD538A17A0ABF500311D0B /* watch@2x.png */,
+				4DDD531C17A07C8800311D0B /* Thermopylae-Info.plist */,
+				4DDD531D17A07C8800311D0B /* InfoPlist.strings */,
+				4DDD532017A07C8800311D0B /* main.m */,
+				4DDD532217A07C8800311D0B /* Thermopylae-Prefix.pch */,
+				4DDD532317A07C8800311D0B /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4DDD535F17A0A0B100311D0B /* External */ = {
+			isa = PBXGroup;
+			children = (
+				4DDD538217A0AAF300311D0B /* ITSidebar.h */,
+				4DDD538317A0AAF300311D0B /* ITSidebar.m */,
+				4DDD538417A0AAF300311D0B /* ITSidebarItemCell.h */,
+				4DDD538517A0AAF300311D0B /* ITSidebarItemCell.m */,
+				4DDD538617A0AAF300311D0B /* ITLeakWarningHelper.h */,
+				4DDD537417A0A5F900311D0B /* Rebel.xcodeproj */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
+		4DDD537517A0A5F900311D0B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DDD537C17A0A5FA00311D0B /* Rebel.framework */,
+				4DDD537E17A0A5FA00311D0B /* RebelTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4DDD531017A07C8800311D0B /* Thermopylae */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DDD532E17A07C8800311D0B /* Build configuration list for PBXNativeTarget "Thermopylae" */;
+			buildPhases = (
+				4DDD530D17A07C8800311D0B /* Sources */,
+				4DDD530E17A07C8800311D0B /* Frameworks */,
+				4DDD530F17A07C8800311D0B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DDD538017A0A6F200311D0B /* PBXTargetDependency */,
+			);
+			name = Thermopylae;
+			productName = Titan;
+			productReference = 4DDD531117A07C8800311D0B /* Thermopylae.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4DDD530917A07C8800311D0B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = AQ;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Albert Martin";
+			};
+			buildConfigurationList = 4DDD530C17A07C8800311D0B /* Build configuration list for PBXProject "Thermopylae" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4DDD530817A07C8800311D0B;
+			productRefGroup = 4DDD531217A07C8800311D0B /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4DDD537517A0A5F900311D0B /* Products */;
+					ProjectRef = 4DDD537417A0A5F900311D0B /* Rebel.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				4DDD531017A07C8800311D0B /* Thermopylae */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		4DDD537C17A0A5FA00311D0B /* Rebel.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Rebel.framework;
+			remoteRef = 4DDD537B17A0A5FA00311D0B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4DDD537E17A0A5FA00311D0B /* RebelTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RebelTests.octest;
+			remoteRef = 4DDD537D17A0A5FA00311D0B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4DDD530F17A07C8800311D0B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DDD531F17A07C8800311D0B /* InfoPlist.strings in Resources */,
+				4DDD532517A07C8800311D0B /* Credits.rtf in Resources */,
+				4DDD532B17A07C8800311D0B /* MainMenu.xib in Resources */,
+				4DDD533217A0822900311D0B /* aht in Resources */,
+				4DDD538B17A0ABF500311D0B /* watch-pushed.png in Resources */,
+				4DDD538C17A0ABF500311D0B /* watch-pushed@2x.png in Resources */,
+				4DDD538D17A0ABF500311D0B /* watch.png in Resources */,
+				4DDD538E17A0ABF500311D0B /* watch@2x.png in Resources */,
+				4DDD539317A0AC0400311D0B /* push-pushed.png in Resources */,
+				4DDD539417A0AC0400311D0B /* push-pushed@2x.png in Resources */,
+				4DDD539517A0AC0400311D0B /* push.png in Resources */,
+				4DDD539617A0AC0400311D0B /* push@2x.png in Resources */,
+				4DDD539A17A0BBB100311D0B /* main_header.tiff in Resources */,
+				4DBBA13417C868D4005C274D /* dark_sector.tiff in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4DDD530D17A07C8800311D0B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DDD532117A07C8800311D0B /* main.m in Sources */,
+				4DDD532817A07C8800311D0B /* AQAppDelegate.m in Sources */,
+				4DDD539717A0ACBC00311D0B /* ITSidebar.m in Sources */,
+				4DDD539817A0ACC000311D0B /* ITSidebarItemCell.m in Sources */,
+				4DDD539D17A0BF5400311D0B /* AQCustomer.m in Sources */,
+				4DBBA13117C83CD0005C274D /* AQTaskNumberToBusy.m in Sources */,
+				4DBBA13717C86AF8005C274D /* AQEnvironmentVisualizer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4DDD538017A0A6F200311D0B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Rebel;
+			targetProxy = 4DDD537F17A0A6F200311D0B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4DDD531D17A07C8800311D0B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DDD531E17A07C8800311D0B /* en */,
+			);
+			name = InfoPlist.strings;
+			path = ../Thermopylae;
+			sourceTree = "<group>";
+		};
+		4DDD532317A07C8800311D0B /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DDD532417A07C8800311D0B /* en */,
+			);
+			name = Credits.rtf;
+			path = ../Thermopylae;
+			sourceTree = "<group>";
+		};
+		4DDD532917A07C8800311D0B /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DDD532A17A07C8800311D0B /* en */,
+			);
+			name = MainMenu.xib;
+			path = ../Thermopylae;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4DDD532C17A07C8800311D0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		4DDD532D17A07C8800311D0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		4DDD532F17A07C8800311D0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/Rebel-faadepqbrktvecbhihyayqvanfoh/Build/Products/Debug\"",
+					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/Rebel-faadepqbrktvecbhihyayqvanfoh/Build/Products/Release\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Thermopylae/Thermopylae-Prefix.pch";
+				INFOPLIST_FILE = "Thermopylae/Thermopylae-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_NAME = Thermopylae;
+				USER_HEADER_SEARCH_PATHS = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4DDD533017A07C8800311D0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/Rebel-faadepqbrktvecbhihyayqvanfoh/Build/Products/Debug\"",
+					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/Rebel-faadepqbrktvecbhihyayqvanfoh/Build/Products/Release\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Thermopylae/Thermopylae-Prefix.pch";
+				INFOPLIST_FILE = "Thermopylae/Thermopylae-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_NAME = Thermopylae;
+				USER_HEADER_SEARCH_PATHS = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4DDD530C17A07C8800311D0B /* Build configuration list for PBXProject "Thermopylae" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DDD532C17A07C8800311D0B /* Debug */,
+				4DDD532D17A07C8800311D0B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DDD532E17A07C8800311D0B /* Build configuration list for PBXNativeTarget "Thermopylae" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DDD532F17A07C8800311D0B /* Debug */,
+				4DDD533017A07C8800311D0B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4DDD530917A07C8800311D0B /* Project object */;
+}
