@@ -29,12 +29,14 @@
     response = [NSMutableDictionary dictionaryWithObject:@"success" forKey:@"thermopylae"];
     
     if ([pathComponents objectAtIndex:1]) {
-        [(AQAppDelegate *)[[NSApplication sharedApplication] delegate] loadCustomerDataForCustomer: [pathComponents objectAtIndex:1]];
-        [response setObject:[pathComponents objectAtIndex:1] forKey:@"docroot"];
+        if (![[[(AQAppDelegate *)[[NSApplication sharedApplication] delegate] customerData] sitename] isEqualToString: [pathComponents objectAtIndex:1]]) {
+            [(AQAppDelegate *)[[NSApplication sharedApplication] delegate] loadCustomerDataForCustomer: [pathComponents objectAtIndex:1]];
+        }
+        [response setObject:[pathComponents objectAtIndex:1] forKey:@"subscription"];
     }
     
     while ([[(AQAppDelegate *)[[NSApplication sharedApplication] delegate] customerData] tasks] != 0) {
-    	[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
+    	[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
     }
     
     [response setObject:[[(AQAppDelegate *)[[NSApplication sharedApplication] delegate] customerData] hostingSetup] forKey:@"response"];
