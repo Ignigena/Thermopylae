@@ -20,7 +20,7 @@
 {
     NSArray *pathComponents = [path componentsSeparatedByString:@"/"];
     
-    if ([[pathComponents objectAtIndex:1] isEqualToString: @"favicon.ico"]) {
+    if ([[pathComponents objectAtIndex:1] isEqualToString: @"favicon.ico"] || [[pathComponents objectAtIndex:1] isEqualToString: @"ACQUIA_MONITOR"]) {
         return [[HTTPErrorResponse alloc] initWithErrorCode:404];
     }
     
