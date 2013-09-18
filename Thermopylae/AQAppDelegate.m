@@ -43,6 +43,10 @@
     }
 }
 
+- (void)loadCustomerDataForCustomer:(NSString *)customer {
+    [self.customerData loadCustomerBySitename: customer];
+}
+
 - (NSString *)performRegex:(NSString *)regex onString:(NSString *)string
 {
     NSError *error = NULL;

@@ -7,18 +7,31 @@
 //
 
 #import "AQLocalWebAPI.h"
+#import "HTTPErrorResponse.h"
 #import "HTTPDataResponse.h"
 #import "HTTPLogging.h"
 #import "JSONKit.h"
+#import "AQAppDelegate.h"
+#import "AQCustomer.h"
 
 @implementation AQLocalWebAPI
 
 - (NSObject<HTTPResponse> *)httpResponseForMethod:(NSString *)method URI:(NSString *)path
 {
     NSArray *pathComponents = [path componentsSeparatedByString:@"/"];
-    NSDictionary *response;
     
-    response = [NSDictionary dictionaryWithObject:@"success" forKey:@"thermopylae"];
+    if ([[pathComponents objectAtIndex:1] isEqualToString: @"favicon.ico"]) {
+        return [[HTTPErrorResponse alloc] initWithErrorCode:404];
+    }
+    
+    NSMutableDictionary *response;
+    
+    response = [NSMutableDictionary dictionaryWithObject:@"success" forKey:@"thermopylae"];
+    
+    if ([pathComponents objectAtIndex:1]) {
+        [(AQAppDelegate *)[[NSApplication sharedApplication] delegate] loadCustomerDataForCustomer: [pathComponents objectAtIndex:1]];
+        [response setObject:[pathComponents objectAtIndex:1] forKey:@"docroot"];
+    }
 
     return [[HTTPDataResponse alloc] initWithData:[response JSONData]];
 }

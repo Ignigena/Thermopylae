@@ -23,4 +23,6 @@
 @property (weak) IBOutlet NSProgressIndicator *spinner;
 @property (weak) IBOutlet AQCustomer *customerData;
 
+- (void)loadCustomerDataForCustomer:(NSString *)customer;
+
 @end
