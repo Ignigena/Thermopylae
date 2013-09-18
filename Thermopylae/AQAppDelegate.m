@@ -44,6 +44,7 @@
 }
 
 - (void)loadCustomerDataForCustomer:(NSString *)customer {
+    [self.searchField setStringValue:[NSString stringWithFormat:@"@%@", customer]];
     [self.customerData loadCustomerBySitename: customer];
 }
 
