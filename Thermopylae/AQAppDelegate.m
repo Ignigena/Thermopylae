@@ -10,11 +10,20 @@
 #import "AQCustomer.h"
 #import "ITSidebar.h"
 #import "ITSidebarItemCell.h"
+#import "HTTPServer.h"
+#import "AQLocalWebAPI.h"
 
 @implementation AQAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    // Initalize our http server
+	httpServer = [[HTTPServer alloc] init];
+	[httpServer setConnectionClass:[AQLocalWebAPI class]];
+    [httpServer setType:@"_http._tcp."];
+	[httpServer setPort:480];
+    [httpServer start:nil];
+    
     [self.sidebar addItemWithImage:[NSImage imageNamed:@"watch-pushed"] alternateImage:[NSImage imageNamed:@"watch"] target:self action:@selector(watchClicked:)];
     [self.sidebar addItemWithImage:[NSImage imageNamed:@"push-pushed"] alternateImage:[NSImage imageNamed:@"push"] target:self action:@selector(pushClicked:)];
 

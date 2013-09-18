@@ -10,8 +10,12 @@
 
 @class ITSidebar;
 @class AQCustomer;
+@class HTTPServer;
 
 @interface AQAppDelegate : NSObject <NSApplicationDelegate>
+{
+    HTTPServer *httpServer;
+}
 
 @property (assign) IBOutlet NSWindow *window;
 @property (weak) IBOutlet ITSidebar *sidebar;
