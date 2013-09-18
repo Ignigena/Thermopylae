@@ -21,7 +21,7 @@
 	httpServer = [[HTTPServer alloc] init];
 	[httpServer setConnectionClass:[AQLocalWebAPI class]];
     [httpServer setType:@"_http._tcp."];
-	[httpServer setPort:480];
+	[httpServer setPort:47051];
     [httpServer start:nil];
     
     [self.sidebar addItemWithImage:[NSImage imageNamed:@"watch-pushed"] alternateImage:[NSImage imageNamed:@"watch"] target:self action:@selector(watchClicked:)];
