@@ -15,16 +15,14 @@
 @synthesize sitename;
 @synthesize uuid;
 @synthesize environment;
-@synthesize rawHostingSetup;
 
 - (void)loadCustomerBySitename:(NSString *)site {
     self.sitename = [site stringByReplacingOccurrencesOfString:@"@" withString:@""];
     [self generateCustomerUuid];
     [self getEnvironmentDetails];
-    [self getHostedDetails];
 }
 
-- (void)findCustomerByDomain:(NSString *)domain {    
+- (void)findCustomerByDomain:(NSString *)domain {
     NSTask *task = [[NSTask alloc] init];
     [task setLaunchPath:[[NSBundle mainBundle] pathForResource:@"aht" ofType:@""]];
     [task setArguments:[NSArray arrayWithObjects: @"fd", domain, nil]];
@@ -104,44 +102,6 @@
     self.tasks++;
 }
 
-- (void)getHostedDetails {
-    self.rawHostingSetup = @"";
-    NSTask *task = [[NSTask alloc] init];
-    [task setLaunchPath:[[NSBundle mainBundle] pathForResource:@"aht" ofType:@""]];
-    [task setArguments:[NSArray arrayWithObject: [NSString stringWithFormat:@"@%@", self.sitename]]];
-    task.standardOutput = [NSPipe pipe];
-    [[task.standardOutput fileHandleForReading] setReadabilityHandler:^(NSFileHandle *file) {
-        NSData *data = [file availableData]; // this will read to EOF, so call only once
-        NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        
-        if ([result isEqualToString: @"Could not find sitegroup or environment.\r\n"]) {
-            [self performSelectorOnMainThread:@selector(alertCustomerNotFound) withObject:nil waitUntilDone:NO];
-        }
-        
-        NSString *gitURL = [self performRegex:@".*@svn-\\d+\\..*\\.acquia\\.com:.*\\.git" onString:result withCaptureGroup:NO];
-        
-        if (gitURL) {
-            self.repository = gitURL;
-        }
-        
-        NSRegularExpression *aceMatch = [NSRegularExpression regularExpressionWithPattern:@".+\\.prod.hosting.acquia.com(:|\\/)(.+)" options:NSRegularExpressionCaseInsensitive error:nil];
-        if ([aceMatch numberOfMatchesInString:result
-                                      options:0
-                                        range:NSMakeRange(0, [result length])] >= 1) {
-            NSLog(@"Customer is ACE!");
-        }
-        self.rawHostingSetup = [self.rawHostingSetup stringByAppendingString:result];
-    }];
-    
-    [task setTerminationHandler:^(NSTask *task) {
-        [self processHostingSetupResponse];
-        [task.standardOutput fileHandleForReading].readabilityHandler = nil;
-    }];
-    
-    [task launch];
-    self.tasks++;
-}
-
 - (IBAction)loadSubscription:(id)sender {
     NSString *urlToOpen;
     
@@ -154,53 +114,6 @@
     if (![urlToOpen isEqualToString:@""]) {
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:urlToOpen]];
     }
-}
-
-- (void)processHostingSetupResponse
-{
-    self.hostingSetup = [[NSMutableDictionary alloc] init];
-    NSArray *hostingSetupSplit = [self.rawHostingSetup componentsSeparatedByString:@"\r\n\r\n"];
-    for (NSString *object in hostingSetupSplit) {
-        NSString *isEnvironment = [self performRegex:@"\\[\\w+:.*\\] \\[Repo Tag :.*\\] \\[PHP.*\\]" onString:object withCaptureGroup:NO];
-        
-        if (isEnvironment) {
-            NSRegularExpression *multispace = [NSRegularExpression regularExpressionWithPattern:@"  +" options:NSRegularExpressionCaseInsensitive error:nil];
-            
-            NSString *parsedEnvironment = [object stringByReplacingOccurrencesOfString:@"] [" withString:@"|"];
-            parsedEnvironment = [parsedEnvironment stringByReplacingOccurrencesOfString:@"[" withString:@""];
-            parsedEnvironment = [parsedEnvironment stringByReplacingOccurrencesOfString:@"]\r\n" withString:@"|"];
-            parsedEnvironment = [parsedEnvironment stringByReplacingOccurrencesOfString:@"\r\n" withString:@"|"];
-            parsedEnvironment = [parsedEnvironment stringByReplacingOccurrencesOfString:@"| " withString:@"|"];
-            parsedEnvironment = [parsedEnvironment stringByReplacingOccurrencesOfString:@": " withString:@":"];
-            parsedEnvironment = [parsedEnvironment stringByReplacingOccurrencesOfString:@" :" withString:@":"];
-            parsedEnvironment = [multispace stringByReplacingMatchesInString:parsedEnvironment options:0 range:NSMakeRange(0, [parsedEnvironment length]) withTemplate:@"/"];
-            
-            NSMutableArray *customerEnvironment = [[NSMutableArray alloc] init];
-            [customerEnvironment addObjectsFromArray: [parsedEnvironment componentsSeparatedByString:@"|"]];
-            
-            NSArray *environmentTitle = [[customerEnvironment objectAtIndex:0] componentsSeparatedByString:@":"];
-            NSMutableDictionary *environmentDetails = [[NSMutableDictionary alloc] init];
-            [environmentDetails setObject:[environmentTitle objectAtIndex:1] forKey:@"name"];
-            [environmentDetails setObject:[[customerEnvironment objectAtIndex:1] stringByReplacingOccurrencesOfString:@"Repo Tag:" withString:@""] forKey:@"deployed"];
-            [environmentDetails setObject:[[customerEnvironment objectAtIndex:2] stringByReplacingOccurrencesOfString:@"PHP " withString:@""] forKey:@"php"];
-            
-            [customerEnvironment removeObjectAtIndex:0];
-            [customerEnvironment removeObjectAtIndex:0];
-            [customerEnvironment removeObjectAtIndex:0];
-            
-            NSMutableDictionary *servers = [[NSMutableDictionary alloc] init];
-            
-            for (NSString *server in environment) {
-                NSArray *serverInfo = [server componentsSeparatedByString:@"/"];
-                [servers setObject:serverInfo forKey:[serverInfo objectAtIndex: 0]];
-            }
-            
-            [environmentDetails setObject:servers forKey:@"servers"];
-            
-            [self.hostingSetup setObject:environmentDetails forKey:[environmentTitle objectAtIndex:0]];
-        }
-    }
-    self.tasks--;
 }
 
 - (void)alertCustomerNotFound

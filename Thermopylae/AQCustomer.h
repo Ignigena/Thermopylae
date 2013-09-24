@@ -18,8 +18,6 @@
 @property (retain, nonatomic) NSString* sitename;
 @property (retain, nonatomic) NSString* uuid;
 @property (retain, nonatomic) NSString* repository;
-@property (retain, nonatomic) NSString* rawHostingSetup;
-@property (retain, nonatomic) NSMutableDictionary* hostingSetup;
 @property (retain, nonatomic) NSMutableDictionary* environment;
 
 - (void)loadCustomerBySitename:(NSString *)site;
