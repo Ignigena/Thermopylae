@@ -38,8 +38,9 @@
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
         }
         
-        NSDictionary *environment = [[(AQAppDelegate *)[[NSApplication sharedApplication] delegate] customerData] environment];
-        
+        NSMutableDictionary *environment = [[NSMutableDictionary alloc] initWithDictionary:[[(AQAppDelegate *)[[NSApplication sharedApplication] delegate] customerData] environment]];
+        NSDictionary *contacts = [[(AQAppDelegate *)[[NSApplication sharedApplication] delegate] customerData] contacts];
+        [environment setObject:contacts forKey:@"contacts"];
         if (environment) {
             [response setObject:environment forKey:@"response"];
         } else {

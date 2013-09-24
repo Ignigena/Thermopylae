@@ -19,6 +19,7 @@
 @property (retain, nonatomic) NSString* uuid;
 @property (retain, nonatomic) NSString* repository;
 @property (retain, nonatomic) NSMutableDictionary* environment;
+@property (retain, nonatomic) NSMutableDictionary* contacts;
 
 - (void)loadCustomerBySitename:(NSString *)site;
 - (void)findCustomerByDomain:(NSString *)domain;

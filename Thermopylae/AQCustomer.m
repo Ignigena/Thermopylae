@@ -15,11 +15,13 @@
 @synthesize sitename;
 @synthesize uuid;
 @synthesize environment;
+@synthesize contacts;
 
 - (void)loadCustomerBySitename:(NSString *)site {
     self.sitename = [site stringByReplacingOccurrencesOfString:@"@" withString:@""];
     [self generateCustomerUuid];
     [self getEnvironmentDetails];
+    [self getContacts];
 }
 
 - (void)findCustomerByDomain:(NSString *)domain {
@@ -91,6 +93,25 @@
     task.standardOutput = [NSPipe pipe];
     [[task.standardOutput fileHandleForReading] setReadabilityHandler:^(NSFileHandle *file) {
         self.environment = [[[file availableData] objectFromJSONData] objectForKey:@"2001"];
+    }];
+    
+    [task setTerminationHandler:^(NSTask *task) {
+        self.tasks--;
+        [task.standardOutput fileHandleForReading].readabilityHandler = nil;
+    }];
+    
+    [task launch];
+    self.tasks++;
+}
+
+- (void)getContacts {
+    NSTask *task = [[NSTask alloc] init];
+    [task setLaunchPath: [@"~/Development/support-cli/aht" stringByExpandingTildeInPath]];
+    [task setArguments:[NSArray arrayWithObjects: [NSString stringWithFormat:@"@%@", self.sitename], @"contacts", @"--json", nil]];
+    task.standardOutput = [NSPipe pipe];
+    [[task.standardOutput fileHandleForReading] setReadabilityHandler:^(NSFileHandle *file) {
+        self.contacts = [[file availableData] objectFromJSONData];
+        NSLog(@"%@", self.contacts);
     }];
     
     [task setTerminationHandler:^(NSTask *task) {
