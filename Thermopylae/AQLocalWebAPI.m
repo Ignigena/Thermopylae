@@ -26,7 +26,7 @@
     
     NSMutableDictionary *response;
     
-    response = [NSMutableDictionary dictionaryWithObject:@"success" forKey:@"thermopylae"];
+    response = [NSMutableDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"thermopylae"];
 
     if (![[pathComponents objectAtIndex:1] isEqualToString: @""]) {
         if (![[[(AQAppDelegate *)[[NSApplication sharedApplication] delegate] customerData] sitename] isEqualToString: [pathComponents objectAtIndex:1]]) {
@@ -38,7 +38,13 @@
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
         }
         
-        [response setObject:[[(AQAppDelegate *)[[NSApplication sharedApplication] delegate] customerData] environment] forKey:@"response"];
+        NSDictionary *environment = [[(AQAppDelegate *)[[NSApplication sharedApplication] delegate] customerData] environment];
+        
+        if (environment) {
+            [response setObject:environment forKey:@"response"];
+        } else {
+            [response setObject:[NSNumber numberWithBool:NO] forKey:@"thermopylae"];
+        }
     }
 
     return [[HTTPDataResponse alloc] initWithData:[response JSONData]];
