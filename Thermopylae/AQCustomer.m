@@ -143,20 +143,43 @@
         NSString *isEnvironment = [self performRegex:@"\\[\\w+:.*\\] \\[Repo Tag :.*\\] \\[PHP.*\\]" onString:object withCaptureGroup:NO];
         
         if (isEnvironment) {
-            NSArray *allParse = [object componentsSeparatedByString:@"]"];
-            NSArray *environmentParse = [[allParse objectAtIndex:0] componentsSeparatedByString:@":"];
-            [self.hostingSetup setObject:[self sanitizeRawResponse:[environmentParse objectAtIndex:1]] forKey:[self sanitizeRawResponse:[environmentParse objectAtIndex:0]]];
+            NSRegularExpression *multispace = [NSRegularExpression regularExpressionWithPattern:@"  +" options:NSRegularExpressionCaseInsensitive error:nil];
+            
+            NSString *parsedEnvironment = [object stringByReplacingOccurrencesOfString:@"] [" withString:@"|"];
+            parsedEnvironment = [parsedEnvironment stringByReplacingOccurrencesOfString:@"[" withString:@""];
+            parsedEnvironment = [parsedEnvironment stringByReplacingOccurrencesOfString:@"]\r\n" withString:@"|"];
+            parsedEnvironment = [parsedEnvironment stringByReplacingOccurrencesOfString:@"\r\n" withString:@"|"];
+            parsedEnvironment = [parsedEnvironment stringByReplacingOccurrencesOfString:@"| " withString:@"|"];
+            parsedEnvironment = [parsedEnvironment stringByReplacingOccurrencesOfString:@": " withString:@":"];
+            parsedEnvironment = [parsedEnvironment stringByReplacingOccurrencesOfString:@" :" withString:@":"];
+            parsedEnvironment = [multispace stringByReplacingMatchesInString:parsedEnvironment options:0 range:NSMakeRange(0, [parsedEnvironment length]) withTemplate:@"/"];
+            
+            NSMutableArray *environment = [[NSMutableArray alloc] init];
+            [environment addObjectsFromArray: [parsedEnvironment componentsSeparatedByString:@"|"]];
+            
+            NSArray *environmentTitle = [[environment objectAtIndex:0] componentsSeparatedByString:@":"];
+            NSMutableDictionary *environmentDetails = [[NSMutableDictionary alloc] init];
+            [environmentDetails setObject:[environmentTitle objectAtIndex:1] forKey:@"name"];
+            [environmentDetails setObject:[[environment objectAtIndex:1] stringByReplacingOccurrencesOfString:@"Repo Tag:" withString:@""] forKey:@"deployed"];
+            [environmentDetails setObject:[[environment objectAtIndex:2] stringByReplacingOccurrencesOfString:@"PHP " withString:@""] forKey:@"php"];
+            
+            [environment removeObjectAtIndex:0];
+            [environment removeObjectAtIndex:0];
+            [environment removeObjectAtIndex:0];
+            
+            NSMutableDictionary *servers = [[NSMutableDictionary alloc] init];
+            
+            for (NSString *server in environment) {
+                NSArray *serverInfo = [server componentsSeparatedByString:@"/"];
+                [servers setObject:serverInfo forKey:[serverInfo objectAtIndex: 0]];
+            }
+            
+            [environmentDetails setObject:servers forKey:@"servers"];
+            
+            [self.hostingSetup setObject:environmentDetails forKey:[environmentTitle objectAtIndex:0]];
         }
     }
     self.tasks--;
-}
-
-- (NSString *)sanitizeRawResponse:(NSString *)string
-{
-    string = [string stringByReplacingOccurrencesOfString:@"[" withString:@""];
-    string = [string stringByReplacingOccurrencesOfString:@" " withString:@""];
-    string = [string stringByReplacingOccurrencesOfString:@"]" withString:@""];
-    return string;
 }
 
 - (void)alertCustomerNotFound
