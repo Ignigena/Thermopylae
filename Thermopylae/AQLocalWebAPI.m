@@ -38,7 +38,7 @@
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
         }
         
-        [response setObject:[[(AQAppDelegate *)[[NSApplication sharedApplication] delegate] customerData] hostingSetup] forKey:@"response"];
+        [response setObject:[[(AQAppDelegate *)[[NSApplication sharedApplication] delegate] customerData] environment] forKey:@"response"];
     }
 
     return [[HTTPDataResponse alloc] initWithData:[response JSONData]];

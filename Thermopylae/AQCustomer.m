@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Albert Martin. All rights reserved.
 //
 
+#import "JSONKit.h"
 #import "AQCustomer.h"
 
 @implementation AQCustomer
@@ -13,11 +14,13 @@
 @synthesize tasks;
 @synthesize sitename;
 @synthesize uuid;
+@synthesize environment;
 @synthesize rawHostingSetup;
 
 - (void)loadCustomerBySitename:(NSString *)site {
     self.sitename = [site stringByReplacingOccurrencesOfString:@"@" withString:@""];
     [self generateCustomerUuid];
+    [self getEnvironmentDetails];
     [self getHostedDetails];
 }
 
@@ -72,6 +75,24 @@
         if ([uuidByUrl count]>=5) {
             self.uuid = [uuidByUrl objectAtIndex:5];
         }
+    }];
+    
+    [task setTerminationHandler:^(NSTask *task) {
+        self.tasks--;
+        [task.standardOutput fileHandleForReading].readabilityHandler = nil;
+    }];
+    
+    [task launch];
+    self.tasks++;
+}
+
+- (void)getEnvironmentDetails {
+    NSTask *task = [[NSTask alloc] init];
+    [task setLaunchPath:[[NSBundle mainBundle] pathForResource:@"aht" ofType:@""]];
+    [task setArguments:[NSArray arrayWithObjects: [NSString stringWithFormat:@"@%@", self.sitename], @"--json", nil]];
+    task.standardOutput = [NSPipe pipe];
+    [[task.standardOutput fileHandleForReading] setReadabilityHandler:^(NSFileHandle *file) {
+        self.environment = [[[file availableData] objectFromJSONData] objectForKey:@"2001"];
     }];
     
     [task setTerminationHandler:^(NSTask *task) {
@@ -154,18 +175,18 @@
             parsedEnvironment = [parsedEnvironment stringByReplacingOccurrencesOfString:@" :" withString:@":"];
             parsedEnvironment = [multispace stringByReplacingMatchesInString:parsedEnvironment options:0 range:NSMakeRange(0, [parsedEnvironment length]) withTemplate:@"/"];
             
-            NSMutableArray *environment = [[NSMutableArray alloc] init];
-            [environment addObjectsFromArray: [parsedEnvironment componentsSeparatedByString:@"|"]];
+            NSMutableArray *customerEnvironment = [[NSMutableArray alloc] init];
+            [customerEnvironment addObjectsFromArray: [parsedEnvironment componentsSeparatedByString:@"|"]];
             
-            NSArray *environmentTitle = [[environment objectAtIndex:0] componentsSeparatedByString:@":"];
+            NSArray *environmentTitle = [[customerEnvironment objectAtIndex:0] componentsSeparatedByString:@":"];
             NSMutableDictionary *environmentDetails = [[NSMutableDictionary alloc] init];
             [environmentDetails setObject:[environmentTitle objectAtIndex:1] forKey:@"name"];
-            [environmentDetails setObject:[[environment objectAtIndex:1] stringByReplacingOccurrencesOfString:@"Repo Tag:" withString:@""] forKey:@"deployed"];
-            [environmentDetails setObject:[[environment objectAtIndex:2] stringByReplacingOccurrencesOfString:@"PHP " withString:@""] forKey:@"php"];
+            [environmentDetails setObject:[[customerEnvironment objectAtIndex:1] stringByReplacingOccurrencesOfString:@"Repo Tag:" withString:@""] forKey:@"deployed"];
+            [environmentDetails setObject:[[customerEnvironment objectAtIndex:2] stringByReplacingOccurrencesOfString:@"PHP " withString:@""] forKey:@"php"];
             
-            [environment removeObjectAtIndex:0];
-            [environment removeObjectAtIndex:0];
-            [environment removeObjectAtIndex:0];
+            [customerEnvironment removeObjectAtIndex:0];
+            [customerEnvironment removeObjectAtIndex:0];
+            [customerEnvironment removeObjectAtIndex:0];
             
             NSMutableDictionary *servers = [[NSMutableDictionary alloc] init];
             
